@@ -1,0 +1,10 @@
+W&B Name,Label,base model,num_layers,hidden_size (residual stream),embedding size,Trainable params,eval loss @ 98% of 1 epoch of 250k,eval loss delta from baseline,Training time (hours),Training,Initialization,Embed / DL config,Total DS,Test split,Notes
+no-dl-clean-run-4,NoDL-96-96-5.5M,GPTNeo,4,96,96,"5,467,680",2.507,-50.9%,4.4,from scratch,random,N/A,250k,0.01,Embedding is entire (small) residual stream
+no-dl-clean-run-5,NoDL-384-384-27M,GPTNeo,4,384,384,"27,179,136",1.761,-6.0%,6.6,from scratch,random,N/A,250k,0.01,Compare to run 3 (DL vs normal xf with semi-comparable num params) - does DL give better tradeoff?
+no-dl-clean-run-0,NoDL-768-768-69M,GPTNeo,4,768,768,"68,514,048",1.661,0.0%,15.0,from scratch,random,N/A,250k,0.01,"Baseline - embedding is entire residual stream
+
+BTW, attention types are GPTNeo default: [[""global"", ""local""], 2]"
+dl-clean-run-1,DL-768-384-49M,GPTNeo with DL,4,768,384,"49,215,360",1.722,-3.7%,9.3,from scratch,random,same,250k,0.01,Embedding is 1/2 of baseline residual stream
+dl-clean-run-2,DL-768-192-40M,GPTNeo with DL,4,768,192,"39,566,016",1.741,-4.8%,8.7,from scratch,random,same,250k,0.01,Embedding is 1/4 of baseline residual stream
+dl-clean-run-3,DL-768-96-35M,GPTNeo with DL,4,768,96,"34,741,344",1.813,-9.2%,8.0,from scratch,random,same,250k,0.01,Embedding is 1/8 of baseline residual stream
+switch-dl-clean-run-6,SwDL-768-192-40M,GPTNeo with sw DL,4,768,192,"39,566,016",1.741,-4.8%,8.4,from scratch,random,switch,250k,0.01,Compare to run 2 (same vs switch) - does switch offer better tradeoff? <- Pretty much identical!
